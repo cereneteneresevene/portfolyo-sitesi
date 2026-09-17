@@ -1,0 +1,138 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans:
+    'Inter', system-ui, 'Segoe UI', Roboto, sans-serif;
+
+  --color-bg: #f7f7fb;
+  --color-surface: #ffffff;
+  --color-surface-2: #eef0f8;
+  --color-border: #e2e3ef;
+  --color-text: #1c1a2e;
+  --color-text-muted: #5b5972;
+
+  --color-navy-950: #0a0a17;
+  --color-navy-900: #10101f;
+  --color-navy-800: #171730;
+  --color-navy-700: #211f42;
+  --color-navy-600: #2b2856;
+
+  --color-accent: #7c3aed;
+  --color-accent-2: #22d3ee;
+
+  --animate-fade-up: fade-up 0.7s ease both;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-marquee: marquee 28s linear infinite;
+  --animate-blob: blob 12s ease-in-out infinite;
+
+  @keyframes fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes float {
+    0%,
+    100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-12px);
+    }
+  }
+
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  @keyframes blob {
+    0%,
+    100% {
+      transform: translate(0, 0) scale(1);
+    }
+    33% {
+      transform: translate(24px, -18px) scale(1.08);
+    }
+    66% {
+      transform: translate(-18px, 14px) scale(0.94);
+    }
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-[var(--color-bg)] text-[var(--color-text)] transition-colors duration-300;
+}
+
+.dark body {
+  @apply bg-[var(--color-navy-950)] text-slate-100;
+}
+
+::selection {
+  background: color-mix(in srgb, var(--color-accent) 40%, transparent);
+}
+
+.gradient-text {
+  background: linear-gradient(
+    120deg,
+    var(--color-accent) 0%,
+    var(--color-accent-2) 50%,
+    var(--color-accent) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradient-shift 6s ease-in-out infinite;
+}
+
+@keyframes gradient-shift {
+  0%,
+  100% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
+}
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 2px;
+  width: 100%;
+  background: linear-gradient(
+    120deg,
+    var(--color-accent),
+    var(--color-accent-2)
+  );
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.is-active::after {
+  transform: scaleX(1);
+}
