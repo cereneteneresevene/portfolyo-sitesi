@@ -1,32 +1,57 @@
-# React + TypeScript + Vite
+# Ceren Tanrıseven — Portfolyo Sitesi
+React, TypeScript ve Tailwind CSS ile geliştirilmiştir; özgeçmiş, projeler, yetenekler ve iş deneyimi bilgilerini modern ve responsive bir arayüzde bir araya getirir.
 
-This template provides a minimal setup to get React working in Vite with HMR and some Oxlint rules.
+🔗 **Canlı demo:**(https://portfolyo-sitesi-six.vercel.app)
 
-Currently, two official plugins are available:
+## Özellikler
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- ⚡️ Vite ile hızlı geliştirme ve build süreci
+- 🎨 Tailwind CSS ile modern, koyu/açık tema destekli tasarım
+- 📱 Tüm cihazlarda uyumlu (responsive) arayüz
+- ✨ Scroll ile ortaya çıkan (reveal) animasyonlar
+- 🧩 Bölümler: Hero, Hakkımda, Yetenekler, Projeler, İş Deneyimi, Eğitim, İletişim
+- 📄 CV indirme özelliği
 
-## React Compiler
+## Kullanılan Teknolojiler
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+**Frontend:** React, TypeScript, Tailwind CSS
+**Diller:** JavaScript, Python, Java, C#
+**Backend / Araçlar (deneyim):** Node.js, Express.js, .NET Core, MSSQL, MongoDB, Git, Jira, Figma
 
-## Expanding the Oxlint configuration
+## Kurulum
 
-If you are developing a production application, we recommend enabling type-aware lint rules by installing `oxlint-tsgolint` and editing `.oxlintrc.json`:
+Projeyi yerel ortamınızda çalıştırmak için:
 
-```json
-{
-  "$schema": "./node_modules/oxlint/configuration_schema.json",
-  "plugins": ["react", "typescript", "oxc"],
-  "options": {
-    "typeAware": true
-  },
-  "rules": {
-    "react/rules-of-hooks": "error",
-    "react/only-export-components": ["warn", { "allowConstantExport": true }]
-  }
-}
+```bash
+# Depoyu klonlayın
+git clone https://github.com/cereneteneresevene/portfolyo-sitesi.git
+cd portfolyo-sitesi
+
+# Bağımlılıkları yükleyin
+npm install
+
+# Geliştirme sunucusunu başlatın
+npm run dev
 ```
 
-See the [Oxlint rules documentation](https://oxc.rs/docs/guide/usage/linter/rules) for the full list of rules and categories.
+Uygulama varsayılan olarak `http://localhost:5173` adresinde çalışacaktır.
+
+### Diğer komutlar
+
+```bash
+npm run build    # Production build oluşturur
+npm run preview  # Build çıktısını yerel olarak önizler
+npm run lint     # Oxlint ile kod kontrolü yapar
+```
+
+## Proje Yapısı
+
+```
+src/
+├── assets/          # Görseller (avatar vb.)
+├── components/       # Hero, About, Skills, Projects, WorkExperience,
+│                      # Education, Contact, Footer, Header vb. bileşenler
+├── data/             # projects.ts, skills.ts, education.ts, workExperience.ts
+├── hooks/            # useTheme, useInView, useActiveSection
+└── main.tsx
+```
